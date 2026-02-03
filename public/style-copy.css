@@ -50,7 +50,7 @@ section{
   /* backface-visibility: hidden; */
 
   h1{
-    background-color: #727A80;
+    background-color: #5a3821;
     color: white;
     border-radius: 0 2rem 2rem 0;
     width: 70px;
@@ -61,16 +61,17 @@ section{
     height: 100%;
     text-align: center;
     font-family: Arial;
+
+    &:hover{
+      --x:100px;
+      --y:100px;
+      background: radial-gradient(at var(--x) var(--y), orangered 3%, #5a3821 70%);
+    }
   }
 
   img{
     align-self: center;
 
-    &:hover{
-      --x:100px;
-      --y:100px;
-      background: radial-gradient(at var(--x) var(--y), rgba(63, 63, 63, 0.33) 2%, white 10%);
-    }
   }
 
   ul{
@@ -88,6 +89,11 @@ section{
 
       label{
         font-size: 16px;
+      }
+
+      &:hover{
+        border-bottom: black solid;
+        font-weight: 400;
       }
     }
   }
