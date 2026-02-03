@@ -1,34 +1,32 @@
 {% render 'partials/head.liquid' %}
 
-    <article>
+  <section>
+    <h1>2026 PROFILE CARD</h1>
 
-    <header>
-      <h1>{{ person.name }}</h1>
-    </header>
+    <img src="/assets/mugshot-za.png" alt="pasfoto Seb" width="240">
     
-    <p>_VAN_0_NAAR_100_</p>
-    <p>_FRONT-ENDER_</p>
-
-     <div class="foto">
-        <img src="/assets/mugshot za.png" alt="mugshot" height="180px" >
-       <img src="/assets/vliegtuigza.png" alt="" height="100px">
-       <img src="/assets/island.png" alt="" height="180px">
-     </div>
-      <div class="progress">
-        <div class="progress-value"></div>
-      </div>
-
-          <dl class="visite-dl">
-        <dt>_SPORTEN_</dt>
-        <dd>✦✦✦</dd>
-        
-        <dt>_KLEDING_</dt>
-        <dd>✦✦✦</dd>
-        
-        <dt>_REIZEN_</dt>
-        <dd>✦✦✦✦</dd>
-      </dl>
-
-    </article>
-
+    <ul>
+      <li>
+        <label>[Name]</label>
+        {{person.name}}
+      </li>
+      <li>
+        <label>[Born]</label>
+        {{person.birthdate}}
+      </li>
+      <li>
+        <label>[Length]</label>
+        {{person.length}}cm
+      </li>
+      <li>
+        <label>[Based in]</label>
+        {{person.based}}
+      </li>
+      <li>
+        <label>[Studying at]</label>
+        {{person.studying}}
+      </li>
+    </ul>
+  </section>
+{% comment %} <p>{{ person|json }}</p> {% endcomment %}
 {% render 'partials/foot.liquid' %}
