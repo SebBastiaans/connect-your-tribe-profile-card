@@ -9,6 +9,11 @@
   font-family: roboto;
   src: url(/assets/RobotoMono-VariableFont_wght.ttf);
 }
+
+html{
+  width: 200vw;
+}
+
 body{
   background-color: #d6d6d6;
   display: flex;
@@ -17,15 +22,32 @@ body{
   align-items: center;
 }
 
+@keyframes --rotate-self{
+  from{
+    transform: translateX(-50%) rotateY(0deg);
+  }
+  to{
+    transform: translateX(-50%) rotateY(180deg);
+  }
+}
+
 section{
   width: 370px;
   background-color: white;
   border-radius: 2rem;
-  position: relative;
+  position: fixed;
   display: grid;
   grid-template-columns:300px 70px;
   grid-template-rows: auto auto;
   justify-items: center;
+  left: 50%; /*50% vd viewport*/
+
+  animation-name: --rotate-self;  /* https://youtu.be/aaEvUfC14e4?si=XX5uYA9281zmRpEi */
+  animation-fill-mode: forwards;
+  animation-timeline: scroll(inline);
+  transform-origin: center;
+
+  /* backface-visibility: hidden; */
 
   h1{
     background-color: #727A80;
@@ -38,16 +60,17 @@ section{
     right: 0;
     height: 100%;
     text-align: center;
+
   }
 
   img{
     align-self: center;
 
-    &:hover{
+    /* &:hover{
       --y:100px;
       --x:100px;
       background-color: radial-gradient(at var(--x) var(--y), yellow 5%, orangered 20%);
-    }
+    } */
   }
 
   ul{
@@ -67,5 +90,10 @@ section{
         font-size: 16px;
       }
     }
+  }
+
+  .back-photo{
+    transform: translateZ(50px);
+    background-color: white;
   }
 }

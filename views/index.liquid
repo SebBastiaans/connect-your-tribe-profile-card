@@ -3,7 +3,7 @@
   <section>
     <h1>2026 PROFILE CARD</h1>
 
-    <img src="/assets/mugshot-za.png" alt="pasfoto Seb" width="240">
+    <img class="front-photo" src="/assets/mugshot-za.png" alt="pasfoto Seb" width="240">
     
     <ul>
       <li>
@@ -27,6 +27,8 @@
         {{person.studying}}
       </li>
     </ul>
+
+    {% comment %} <img class="back-photo" src="/assets/schoolfotoYN.png" alt="oude foto van Seb" width="200"> {% endcomment %}
   </section>
 {% comment %} <p>{{ person|json }}</p> {% endcomment %}
 {% render 'partials/foot.liquid' %}
