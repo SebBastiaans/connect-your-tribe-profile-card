@@ -60,17 +60,17 @@ section{
     right: 0;
     height: 100%;
     text-align: center;
-
+    font-family: Arial;
   }
 
   img{
     align-self: center;
 
-    /* &:hover{
-      --y:100px;
+    &:hover{
       --x:100px;
-      background-color: radial-gradient(at var(--x) var(--y), yellow 5%, orangered 20%);
-    } */
+      --y:100px;
+      background: radial-gradient(at var(--x) var(--y), rgba(63, 63, 63, 0.33) 2%, white 10%);
+    }
   }
 
   ul{
