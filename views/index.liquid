@@ -1,6 +1,7 @@
 {% render 'partials/head.liquid' %}
 
-  <section>
+<article>
+  <section class="front">
     <h1>2026 PROFILE CARD</h1>
 
     <img class="front-photo" src="/assets/mugshot-za.png" alt="pasfoto Seb" width="240">
@@ -16,18 +17,21 @@
       </li>
       <li>
         <label>[Length]</label>
-        {{person.length}}cm
+        {{custom.length}}cm
       </li>
       <li>
         <label>[Based in]</label>
-        {{person.based}}
+        {{custom.based}}
       </li>
       <li>
         <label>[Studying at]</label>
-        {{person.studying}}
+        {{custom.studying}}
       </li>
     </ul>
-
-    {% comment %} <img class="back-photo" src="/assets/schoolfotoYN.png" alt="oude foto van Seb" width="200"> {% endcomment %}
   </section>
+
+  <section class="back">
+    <img class="back-photo" src="/assets/schoolfotoYN.png" alt="oude foto van Seb" width="200">
+  </section>
+</article>
 {% render 'partials/foot.liquid' %}

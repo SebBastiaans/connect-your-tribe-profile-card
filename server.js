@@ -43,7 +43,10 @@ app.use(express.urlencoded({extended: true}))
 // In je visitekaartje was dit waarschijnlijk index.html
 app.get('/', async function (request, response) {
    // Render index.liquid uit de Views map en geef de opgehaalde data mee, in een variabele genaamd person
-   response.render('index.liquid', {person: personResponseJSON.data})
+   const personData = personResponseJSON.data
+  const customData = JSON.parse(personData.custom)
+
+   response.render('index.liquid', {person: personData, custom: customData})
 })
 
 // Had je meer pagina's in je oude visitekaartje? Zoals een contact.html?
@@ -52,6 +55,15 @@ app.get('/', async function (request, response) {
    // Render bijvoorbeeld contact.liquid uit de views map, zonder daar iets aan mee te geven
    // response.render('contact.liquid')
 // })
+
+app.get('/oefenen', async function (request, response) {
+   // Render practice.liquid uit de Views map en geef de opgehaalde data mee, in een variabele genaamd person
+
+  const personData = personResponseJSON.data
+  const customData = JSON.parse(personData.custom)
+
+   response.render('practice.liquid', {person: personData, custom: customData})
+})
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
