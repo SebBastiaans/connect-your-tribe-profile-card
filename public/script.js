@@ -1,4 +1,4 @@
-let mouse = document.querySelector('h1');
+let mouse = document.querySelector('.back');
 
 mouse.addEventListener("mousemove", function (move) {
   mouse.style.setProperty("--y", move.offsetY + "px");

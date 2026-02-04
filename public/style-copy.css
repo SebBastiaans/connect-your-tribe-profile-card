@@ -9,11 +9,14 @@
   font-family: roboto;
   src: url(/assets/RobotoMono-VariableFont_wght.ttf);
 }
+@font-face{
+  font-family: drawn;
+  src: url(/assets/DJGROSS.ttf);
+}
 
 html{
   width: 200vw;
 }
-
 
 body{
   background-color: #d6d6d6;
@@ -21,6 +24,44 @@ body{
   height: 100vh;
   justify-content: center;
   align-items: center;
+
+  &:has(h1:hover){
+    background-color: black;
+
+    section{
+      border: white 1px solid;
+      background: linear-gradient(0deg in oklch, black 40%, #F5296B 60%);
+
+
+      h1{
+        background-color: black;
+        color: greenyellow;
+      }
+      .front-photo{
+        background: url(/assets/boos.png);
+        background-size: cover ;
+      }
+
+      li{
+        font-family: drawn;
+      }
+
+      li:nth-of-type(even){
+        color: yellow;
+
+        label{
+          color: lightblue;
+        }
+      }
+      li:nth-of-type(odd){
+        color: purple;
+
+        label{
+          color: white;
+        }
+      }
+    }
+  }
 }
 
 @keyframes --rotate-self{
@@ -34,16 +75,18 @@ body{
 
 article{
   display: grid;
-  perspective: 30rem;
+  perspective: 50rem;
   transform-style: preserve-3d;
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
+  height: 600px;
 
   section{
     grid-area: 1/1;
     backface-visibility: hidden;
   }
+
 }
 
 .front{
@@ -73,14 +116,21 @@ article{
     font-family: Arial;
 
     &:hover{
-      --x:100px;
-      --y:100px;
-      background: radial-gradient(at var(--x) var(--y), orangered 3%, #5a3821 70%);
+      font-family: drawn;
     }
   }
 
   img{
     align-self: center;
+  }
+
+  .front-photo{
+    width: 240px;
+    height: 310px;
+    background: url(/assets/mugshot-za.png);
+    background-size: cover;
+    object-fit: cover;
+    display: block;
   }
 
   ul{
@@ -129,4 +179,10 @@ article{
   animation-name: --rotate-back;
   animation-timeline: scroll(inline);
   transform-origin: center;
+
+  &:hover{
+    --x:100px;
+    --y:100px;
+    background: radial-gradient(at var(--x) var(--y), orangered 3%, white 70%);
+  }
 }
