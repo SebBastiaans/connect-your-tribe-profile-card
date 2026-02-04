@@ -44,6 +44,7 @@ body{
 
       li{
         font-family: drawn;
+        border-bottom: dashed yellowgreen;
       }
 
       li:nth-of-type(even){
