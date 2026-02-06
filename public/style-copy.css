@@ -25,7 +25,7 @@ body{
   justify-content: center;
   align-items: center;
 
-  &:has(h1:hover){
+  &:has(h2:hover){
     background-color: black;
 
     section{
@@ -33,7 +33,7 @@ body{
       background: linear-gradient(0deg in oklch, black 40%, #F5296B 60%);
 
 
-      h1{
+      h2{
         background-color: black;
         color: greenyellow;
       }
@@ -88,6 +88,15 @@ article{
     backface-visibility: hidden;
   }
 
+  h1{
+    transform: translateX(-50%);
+    left: 50%;
+    position: absolute;
+    bottom: -6rem;
+    width: max-content;
+    font-family: roboto;
+  }
+
 }
 
 .front{
@@ -103,7 +112,7 @@ article{
   animation-timeline: scroll(inline);
   transform-origin: center;
 
-  h1{
+  h2{
     background-color: #5a3821;
     color: white;
     border-radius: 0 2rem 2rem 0;
@@ -115,6 +124,7 @@ article{
     height: 100%;
     text-align: center;
     font-family: Arial;
+    font-size: 2.5rem;
 
     &:hover{
       font-family: drawn;
@@ -185,5 +195,17 @@ article{
     --x:100px;
     --y:100px;
     background: radial-gradient(at var(--x) var(--y), orangered 3%, white 70%);
+  }
+
+  h3{
+    font-family: roboto;
+    font-size: 2rem;
+    /* font-weight: 300; */
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    border-bottom: black dashed;
+    border-right: black dashed;
+    padding-right: .5rem;
   }
 }
