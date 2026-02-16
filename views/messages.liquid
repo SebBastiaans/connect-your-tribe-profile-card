@@ -1,0 +1,12 @@
+<ul>
+    {% for messages in messages %}
+        <li><p>{{ messages }}</p></li>
+    {% endfor %}
+</ul>
+
+<form action="/berichten" method="POST">
+    <label for="">
+        <input type="text" name="message">
+        <button>go!</button>
+    </label>
+</form>

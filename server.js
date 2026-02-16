@@ -67,10 +67,11 @@ app.get('/oefenen', async function (request, response) {
 
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
-app.post('/', async function (request, response) {
+app.post('/berichten', async function (request, response) {
   // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
   // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
-  response.redirect(303, '/')
+  messages.push(request.body.message)
+  response.redirect(303, '/berichten')
 })
 
 // Stel het poortnummer in waar Express op moet gaan luisteren
@@ -81,4 +82,65 @@ app.set('port', process.env.PORT || 8000)
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`)
+})
+
+
+let messages = []
+app.get('/berichten', async function (request, response) {
+   response.render('messages.liquid', {
+      messages: messages
+   })
+})
+
+
+app.get('/berichten', async function (request, response) {
+
+  // Filter eerst de berichten die je wilt zien, net als bij personen
+  // Deze database wordt gedeeld door iedereen, dus verzin zelf een handig filter,
+  // bijvoorbeeld je teamnaam, je projectnaam, je person ID, de datum van vandaag, etc..
+  const params = {
+    'filter[for]': 'demo-16-februari',
+  }
+  
+  // Maak hiermee de URL aan, zoals we dat ook in de browser deden
+  const apiURL = 'https://fdnd.directus.app/items/messages?' + new URLSearchParams(params)
+  
+  // En haal de data op, via een GET request naar Directus
+  const messagesResponse = await fetch(apiURL)
+  
+  // Zet de JSON daarvan om naar een object
+  const messagesResponseJSON = await messagesResponse.json()
+  
+  // Die we vervolgens doorgeven aan onze view
+  response.render('messages.liquid', {
+    messages: messagesResponseJSON.data
+  })
+
+})
+
+app.post('/berichten', async function (request, response) {
+
+  // Stuur een POST request naar de messages database
+  // Een POST request bevat ook extra parameters, naast een URL
+  await fetch('https://fdnd.directus.app/items/messages', {
+
+    // Overschrijf de standaard GET method, want ook hier gaan we iets veranderen op de server
+    method: 'POST',
+
+    // Geef de body mee als JSON string
+    body: JSON.stringify({
+      // Dit is zodat we ons bericht straks weer terug kunnen vinden met ons filter
+      for: 'demo-16-februari',
+      // En dit is ons eerdere formulierveld
+      text: request.body.message
+    }),
+
+    // En vergeet deze HTTP headers niet: hiermee vertellen we de server dat we JSON doorsturen
+    // (In realistischere projecten zou je hier ook authentication headers of een sleutel meegeven)
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+
+  })
+
 })
